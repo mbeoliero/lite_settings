@@ -1,32 +1,20 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
+# Build artifacts
+/cmd/lsctl/lsctl
+/cmd/lite-settings/lite-settings
 *.exe
-*.exe~
-*.dll
-*.so
-*.dylib
 
-# Test binary, built with `go test -c`
+# Test artifacts
 *.test
-
-# Code coverage profiles and other test artifacts
 *.out
 coverage.*
-*.coverprofile
-profile.cov
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
-
-# Go workspace file
-go.work
+# Go workspace
+# go.work IS committed: the repo is a self-contained multi-module tree meant to
+# be developed together. go.work.sum is machine-local noise and is not.
 go.work.sum
 
-# env file
-.env
-
-# Editor/IDE
-# .idea/
-# .vscode/
+# Editors / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
