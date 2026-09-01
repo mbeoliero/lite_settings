@@ -1,0 +1,20 @@
+# Build artifacts
+/cmd/lsctl/lsctl
+/cmd/lite-settings/lite-settings
+*.exe
+
+# Test artifacts
+*.test
+*.out
+coverage.*
+
+# Go workspace
+# go.work IS committed: the repo is a self-contained multi-module tree meant to
+# be developed together. go.work.sum is machine-local noise and is not.
+go.work.sum
+
+# Editors / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/

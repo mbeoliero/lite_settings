@@ -1,0 +1,29 @@
+# 起测试用的两个库：docker compose up -d
+#
+# 然后：
+#   export LITE_TEST_MYSQL_DSN='root:lite@tcp(127.0.0.1:33061)/lite_settings?parseTime=true&multiStatements=false'
+#   export LITE_TEST_POSTGRES_DSN='postgres://lite:lite@127.0.0.1:54321/lite_settings?sslmode=disable'
+#   go test ./store/ -v -run Integration
+services:
+  mysql:
+    image: mysql:8.4
+    ports: ["33061:3306"]
+    environment:
+      MYSQL_ROOT_PASSWORD: lite
+      MYSQL_DATABASE: lite_settings
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-plite"]
+      interval: 3s
+      retries: 20
+
+  postgres:
+    image: postgres:17
+    ports: ["54321:5432"]
+    environment:
+      POSTGRES_USER: lite
+      POSTGRES_PASSWORD: lite
+      POSTGRES_DB: lite_settings
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lite -d lite_settings"]
+      interval: 3s
+      retries: 20

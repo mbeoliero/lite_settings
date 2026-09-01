@@ -1,0 +1,8 @@
+go 1.27.0
+
+// lsctl 是独立 module：cobra 等 CLI/TUI 依赖不进入根 module，
+// 业务方 import client 时的依赖图不受影响（DESIGN §5.1）。
+use (
+	.
+	./cmd/lsctl
+)
